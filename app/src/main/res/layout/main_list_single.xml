@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/ScrollView" android:layout_width="fill_parent"
+	android:layout_height="wrap_content" android:scrollbars="vertical">
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<TextView
+			android:id="@+id/bg_label"
+			android:padding="10dp"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentLeft="true"
+			android:layout_alignParentTop="true"
+			android:text="@string/select_bg" />
+
+		<ListView
+			android:id="@+id/bg_list"
+			android:layout_width="match_parent"
+			android:layout_height="140dp"
+			android:cacheColorHint="#00000000"
+			android:layout_below="@+id/bg_label" />
+
+		<LinearLayout
+			android:id="@+id/layout_auto_roate"
+			android:layout_below="@+id/bg_list"
+			android:orientation="horizontal"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:padding="10dp">
+
+			<TextView
+				android:id="@+id/auto_rotate_label"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/auto_rotate"
+				android:paddingTop="3dip" />
+
+			<ImageView
+				android:id="@+id/auto_rotate_checkbox"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:scaleType="fitCenter"
+				android:paddingLeft="10dip" />
+
+		</LinearLayout>
+
+		<LinearLayout
+			android:id="@+id/layout_fix_cube"
+			android:layout_below="@id/layout_auto_roate"
+			android:orientation="horizontal"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:padding="10dp">
+
+			<TextView
+				android:id="@+id/fix_cube_label"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/fix_cube"
+				android:paddingTop="3dip" />
+
+			<ImageView
+				android:id="@+id/fix_cube_checkbox"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:scaleType="fitCenter"
+				android:paddingLeft="10dip" />
+
+		</LinearLayout>
+
+		<TextView
+			android:id="@+id/scale_label"
+			android:padding="10dp"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_below="@+id/layout_fix_cube"
+			android:text="@string/cube_size" />
+
+		<SeekBar
+			android:id="@+id/scale_seekbar"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:max="100"
+			android:layout_below="@+id/scale_label" />
+
+		<TextView
+			android:id="@+id/speed_label"
+			android:padding="10dp"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_below="@+id/scale_seekbar"
+			android:text="@string/rotate_speed" />
+
+		<SeekBar
+			android:id="@+id/speed_seekbar"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:max="100"
+			android:layout_below="@+id/speed_label" />
+
+		<LinearLayout
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_below="@+id/speed_seekbar"
+			android:layout_marginTop="20.0dip"
+			android:gravity="center" >
+
+			<Button
+				android:id="@+id/set_button"
+				android:layout_width="120dip"
+				android:layout_height="50dip"
+				android:text="set" />
+			<Button
+				android:id="@+id/share_button"
+				android:layout_width="120dip"
+				android:layout_height="50dip"
+				android:text="share" />
+		</LinearLayout>
+
+	</RelativeLayout>
+
+
+</ScrollView> 

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Application Name -->
+    <string name="app_name">AC Milan 3D Wallpaper</string>
+
+    <!-- Name in Live Wallpaper Picker list -->
+    <string name="lwp_name">AC Milan 3D Wallpaper</string>
+
+    <!-- Description in Live Wallpaper Picker list -->
+    <string name="lwp_desc">Forza Milan!</string>
+
+    <!-- Author -->
+    <string name="lwp_author">TopbaseSoft</string>
+
+    <string name="settings_title">Settings</string>
+    
+    <string name="select_bg">Select Background</string>
+    
+    <string name="cube_size">Cube Size</string>
+    
+    <string name="rotate_speed">Rotate Speed</string>
+    
+    <string name="personal_wallpaper">Personal Wallpaper</string>
+    
+    <string name="bg_1">Background 1</string>
+    
+    <string name="bg_2">Background 2</string>
+    
+    <string name="auto_rotate">Rotate Automatically</string>
+    
+    <string name="fix_cube">Fix Cube</string>
+
+</resources>
