@@ -1,4 +1,4 @@
-package com.tebi.wallpaper3dmilan;
+package com.tebi.cube3d;
 
 public class Article {
 	private String title;

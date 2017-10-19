@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.tebi.wallpaper3dmilan"
-        minSdkVersion 8
+        minSdkVersion 11
         targetSdkVersion 26
     }
 
@@ -16,4 +16,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
     }
+}
+
+dependencies {
+    compile 'com.yalantis:contextmenu:1.0.7'
 }

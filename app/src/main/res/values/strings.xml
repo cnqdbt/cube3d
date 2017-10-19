@@ -2,13 +2,13 @@
 <resources>
 
     <!-- Application Name -->
-    <string name="app_name">AC Milan 3D Wallpaper</string>
+    <string name="app_name">足球圣殿</string>
 
     <!-- Name in Live Wallpaper Picker list -->
-    <string name="lwp_name">AC Milan 3D Wallpaper</string>
+    <string name="lwp_name">足球圣殿3D壁纸</string>
 
     <!-- Description in Live Wallpaper Picker list -->
-    <string name="lwp_desc">Forza Milan!</string>
+    <string name="lwp_desc">足球圣殿3D壁纸</string>
 
     <!-- Author -->
     <string name="lwp_author">TopbaseSoft</string>
@@ -30,5 +30,9 @@
     <string name="auto_rotate">Rotate Automatically</string>
     
     <string name="fix_cube">Fix Cube</string>
+
+    <string name="text">Squid blog crucifix Marfa, consectetur vero placeat mixtape. Non seitan sriracha eu, do Banksy fashion axe cred qui vegan delectus consequat Helvetica mollit. XOXO gluten-free disrupt, gastropub officia cliche chillwave hella pop-up. Fixie swag raw denim, YOLO craft beer assumenda occupy veniam photo booth pug consectetur next level Portland tote bag +1. Mlkshk PBR aliquip placeat Wes Anderson.</string>
+    <string name="title">My Description</string>
+    <string name="context_menu">Context menu</string>
 
 </resources>
