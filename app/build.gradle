@@ -5,7 +5,7 @@ android {
     buildToolsVersion "26.0.0"
 
     defaultConfig {
-        applicationId "com.tebi.wallpaper3dmilan"
+        applicationId "com.tebi.cube3d"
         minSdkVersion 11
         targetSdkVersion 26
     }

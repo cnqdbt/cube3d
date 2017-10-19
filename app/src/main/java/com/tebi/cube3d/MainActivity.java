@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
                 onBackPressed();
             }
         });
-        mToolBarTextView.setText("Samantha");
+        mToolBarTextView.setText("AC米兰");
     }
 
     protected void addFragment(Fragment fragment, boolean addToBackStack, int containerId) {
