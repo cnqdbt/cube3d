@@ -29,12 +29,16 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
 
     private FragmentManager fragmentManager;
     private ContextMenuDialogFragment mMenuDialogFragment;
+    private String[] clubs = {"milan", "juven"};
+    private String[] clubNames = {"AC米兰", "尤文图斯"};
+    private int mCurrentClub;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         fragmentManager = getSupportFragmentManager();
+        mCurrentClub = ((Cube3dApplication) getApplication()).getClub();
         initToolbar();
         initMenuFragment();
         addFragment(new MainFragment(), true, R.id.container);
@@ -72,8 +76,8 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
         MenuObject close = new MenuObject();
         close.setResource(R.drawable.icn_close);
 
-        MenuObject send = new MenuObject("Send message");
-        send.setResource(R.drawable.icn_1);
+        MenuObject send = new MenuObject(clubNames[0]);
+        send.setResource(R.drawable.icon_milan);
 
         MenuObject like = new MenuObject("Like profile");
         Bitmap b = BitmapFactory.decodeResource(getResources(), R.drawable.icn_2);
@@ -122,7 +126,8 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
                 onBackPressed();
             }
         });
-        mToolBarTextView.setText("AC米兰");
+
+        mToolBarTextView.setText(clubNames[mCurrentClub]);
     }
 
     protected void addFragment(Fragment fragment, boolean addToBackStack, int containerId) {
@@ -170,6 +175,7 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
     @Override
     public void onMenuItemClick(View clickedView, int position) {
         Toast.makeText(this, "Clicked on position: " + position, Toast.LENGTH_SHORT).show();
+        ((Cube3dApplication) getApplication()).setClub(position -1);
     }
 
     @Override
