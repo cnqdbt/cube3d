@@ -1,12 +1,23 @@
 package com.tebi.cube3d;
-import java.io.InputStream;
-import java.io.ObjectInputStream;
+
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Point;
+import android.os.Build;
+import android.view.Display;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.WindowManager;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.LinearInterpolator;
 
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 
 import rajawali.BaseObject3D;
-import rajawali.SerializedObject3D;
 import rajawali.animation.Animation3D;
 import rajawali.animation.Animation3DListener;
 import rajawali.animation.RotateAnimation3D;
@@ -18,17 +29,6 @@ import rajawali.math.Quaternion;
 import rajawali.parser.ObjParser;
 import rajawali.renderer.RajawaliRenderer;
 import rajawali.wallpaper.Wallpaper;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
-import android.graphics.Point;
-import android.os.Build;
-import android.view.Display;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.WindowManager;
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.LinearInterpolator;
 
 public class Renderer extends RajawaliRenderer implements OnSharedPreferenceChangeListener{
 	private Animation3D mAnim;
@@ -92,23 +92,26 @@ public class Renderer extends RajawaliRenderer implements OnSharedPreferenceChan
 		mCamera.setLookAt(0, 0, 0);
 		mCamera.setFarPlane(1000);
 
-		ObjParser objParser = new ObjParser(mContext.getResources(), mTextureManager, R.raw.cube_obj);
-		objParser.parse();
+
 
 		ObjParser sceneParser;
 		mCheckedPos = this.preferences.getInt("checked", 0);
-		if (mCheckedPos == 0) {
-			sceneParser = new ObjParser(mContext.getResources(),
-					mTextureManager, R.raw.scenefc_obj);
 
-		} else {
-			sceneParser = new ObjParser(mContext.getResources(),
-					mTextureManager, R.raw.scenefc2_obj);
-		}
+		sceneParser = new ObjParser(mContext.getResources(),
+				mTextureManager, R.raw.scenefc_obj);
 		sceneParser.parse();
 		mScene = sceneParser.getParsedObject();
+		if (mCheckedPos == 0) {
+			mScene.addTexture(mTextureManager.addTexture(getBitmapByName("scene")));
+		} else {
+			mScene.addTexture(mTextureManager.addTexture(getBitmapByName("scene2")));
+		}
 
+
+		ObjParser objParser = new ObjParser(mContext.getResources(), mTextureManager, R.raw.cube_obj);
+		objParser.parse();
 		mCube = objParser.getParsedObject();
+		mCube.addTexture(mTextureManager.addTexture(getBitmapByName("cube_texture")));
 
 		mCube.addLight(light);
 		mCube.addLight(light2);
@@ -154,6 +157,10 @@ public class Renderer extends RajawaliRenderer implements OnSharedPreferenceChan
 
 	private int getDrawableIdByName(String name) {
 		return  getContext().getResources().getIdentifier(name, "drawable", getContext().getPackageName());
+	}
+
+	private Bitmap getBitmapByName (String name) {
+		return BitmapFactory.decodeResource(getContext().getResources(), getDrawableIdByName(name));
 	}
 
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {

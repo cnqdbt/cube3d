@@ -162,76 +162,22 @@ public class Settings extends Activity implements
     }
 
     private void setWallPaper() {
-        Intent i = new Intent();
+//        Intent i = new Intent();
+//
+//        if (Build.VERSION.SDK_INT >= 16) {
+//            i.setAction(WallpaperManager.ACTION_CHANGE_LIVE_WALLPAPER);
+//            i.putExtra(WallpaperManager.EXTRA_LIVE_WALLPAPER_COMPONENT,
+//                    new ComponentName(this, Service.class));
+//        } else {
+//            i.setAction(WallpaperManager.ACTION_LIVE_WALLPAPER_CHOOSER);
+//        }
 
-        if (Build.VERSION.SDK_INT >= 16) {
-            i.setAction(WallpaperManager.ACTION_CHANGE_LIVE_WALLPAPER);
-            i.putExtra(WallpaperManager.EXTRA_LIVE_WALLPAPER_COMPONENT,
-                    new ComponentName(this, Service.class));
-        } else {
-            i.setAction(WallpaperManager.ACTION_LIVE_WALLPAPER_CHOOSER);
-        }
-
-        startActivity(i);
+//        startActivity(i);
         this.finish();
     }
 
     private void share() {
-//        String rootDir = null;
-//        if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
-//            // SD-card available
-//            rootDir = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Android/data/"
-//                    + Settings.this.getPackageName() + "/cache";
-//        } else {
-//            File internalCacheDir = Settings.this.getCacheDir();
-//            // apparently on some configurations this can come back as null
-//            if (internalCacheDir != null) {
-//                rootDir = internalCacheDir.getAbsolutePath();
-//            }
-//        }
-//
-//        File bitmapFile = null;
-//
-//        if (rootDir != null) {
-//            File outFile = new File(rootDir);
-//            outFile.mkdirs();
-//            if (outFile.exists()) {
-//                File nomedia = new File(rootDir, ".nomedia");
-//                bitmapFile = new File(rootDir, "share.png");
-//                try {
-//                    if (!nomedia.exists()) {
-//                        nomedia.createNewFile();
-//                    }
-//
-//                    if (!bitmapFile.exists()) {
-//                        bitmapFile.createNewFile();
-//                        FileOutputStream bitmapWtriter = new FileOutputStream(
-//                                bitmapFile);
-//                        Bitmap bmp = BitmapFactory.decodeResource(
-//                                getResources(), R.drawable.share);
-//                        bmp.compress(Bitmap.CompressFormat.PNG, 100,
-//                                bitmapWtriter);
-//                        bitmapWtriter.flush();
-//                        bitmapWtriter.close();
-//                    }
-//                } catch (IOException e) {
-//                }
-//            }
-//        }
-//
-//        Intent shareIntent = new Intent(Intent.ACTION_SEND);
-//        // shareIntent.putExtra(Intent.EXTRA_SUBJECT, "通过海信备忘录分享");
-//        shareIntent.putExtra(Intent.EXTRA_TEXT,
-//                getResources().getString(R.string.share_content));
-//        if (bitmapFile != null) {
-//            shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(bitmapFile));
-//            shareIntent.setType("image/*");
-//        }
-//        startActivity(Intent.createChooser(shareIntent, getResources()
-//                .getString(R.string.share)));
 
     }
-
-
 
 }
