@@ -2,4 +2,4 @@
     android:author="@string/lwp_author"
     android:description="@string/lwp_desc"
     android:settingsActivity="com.tebi.cube3d.Settings"
-    android:thumbnail="@drawable/icon" />
+    android:thumbnail="@drawable/icon_0" />

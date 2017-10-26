@@ -31,14 +31,13 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
     private ContextMenuDialogFragment mMenuDialogFragment;
     private String[] clubs = {"milan", "juven"};
     private String[] clubNames = {"AC米兰", "尤文图斯"};
-    private int mCurrentClub;
+    TextView mToolBarTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         fragmentManager = getSupportFragmentManager();
-        mCurrentClub = ((Cube3dApplication) getApplication()).getClub();
         initToolbar();
         initMenuFragment();
         addFragment(new MainFragment(), true, R.id.container);
@@ -75,44 +74,20 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
 
         MenuObject close = new MenuObject();
         close.setResource(R.drawable.icn_close);
-
-        MenuObject send = new MenuObject(clubNames[0]);
-        send.setResource(R.drawable.icon_milan);
-
-        MenuObject like = new MenuObject("Like profile");
-        Bitmap b = BitmapFactory.decodeResource(getResources(), R.drawable.icn_2);
-        like.setBitmap(b);
-
-        MenuObject addFr = new MenuObject("Add to friends");
-        BitmapDrawable bd = new BitmapDrawable(getResources(),
-                BitmapFactory.decodeResource(getResources(), R.drawable.icn_3));
-        addFr.setDrawable(bd);
-
-        MenuObject addFav = new MenuObject("Add to favorites");
-        addFav.setResource(R.drawable.icn_4);
-
-        MenuObject block = new MenuObject("Block user");
-        block.setResource(R.drawable.icn_5);
-
-
         menuObjects.add(close);
-        menuObjects.add(send);
-        menuObjects.add(like);
-        menuObjects.add(addFr);
-        menuObjects.add(addFav);
-        menuObjects.add(block);
-        menuObjects.add(block);
-        menuObjects.add(block);
-        menuObjects.add(block);
-        menuObjects.add(block);
-        menuObjects.add(block);
-        menuObjects.add(like);
+
+        for (int i = 0; i < clubs.length; i++) {
+            MenuObject mo = new MenuObject(clubNames[i]);
+            mo.setResource(getDrawableIdByName("icon_" + i));
+            menuObjects.add(mo);
+        }
+
         return menuObjects;
     }
 
     private void initToolbar() {
         Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        TextView mToolBarTextView = (TextView) findViewById(R.id.text_view_toolbar_title);
+        mToolBarTextView = (TextView) findViewById(R.id.text_view_toolbar_title);
         setSupportActionBar(mToolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setHomeButtonEnabled(true);
@@ -127,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
             }
         });
 
-        mToolBarTextView.setText(clubNames[mCurrentClub]);
+        refreshFrontPage();
     }
 
     protected void addFragment(Fragment fragment, boolean addToBackStack, int containerId) {
@@ -176,10 +151,20 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
     public void onMenuItemClick(View clickedView, int position) {
         Toast.makeText(this, "Clicked on position: " + position, Toast.LENGTH_SHORT).show();
         ((Cube3dApplication) getApplication()).setClub(position -1);
+
     }
 
     @Override
     public void onMenuItemLongClick(View clickedView, int position) {
         Toast.makeText(this, "Long clicked on position: " + position, Toast.LENGTH_SHORT).show();
+    }
+
+    private int getDrawableIdByName(String name) {
+        return  getResources().getIdentifier(name, "drawable", getPackageName());
+    }
+
+    private void refreshFrontPage() {
+        int currentClub = ((Cube3dApplication) getApplication()).getClub();
+        mToolBarTextView.setText(clubNames[currentClub]);
     }
 }

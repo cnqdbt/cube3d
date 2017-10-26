@@ -36,7 +36,6 @@ public class Renderer extends RajawaliRenderer implements OnSharedPreferenceChan
 	private BaseObject3D mScene;
 	private float mStartX = 0, mStartY = 0;
 	private final float TORLERANCE = 80.0f;
-//	private int [] mSkins = {R.drawable.cube_texture_gold_filled, R.drawable.cube_texture_silver_filled};
 
 	Number3D mXAxis = new Number3D(1, 0, 0);
 	Number3D mYAxis = new Number3D(0, 1, 0);
@@ -56,6 +55,7 @@ public class Renderer extends RajawaliRenderer implements OnSharedPreferenceChan
 	private GestureDetector mGestureDetector;
 	private CubeRotateAnimation flingRotation;
 	private int mScreenX;
+	private int mCurrentClub;
 
 	public Renderer(Context context) {
 		super(context);
@@ -75,6 +75,7 @@ public class Renderer extends RajawaliRenderer implements OnSharedPreferenceChan
 			size.y = display.getHeight();
 		}
 		mScreenX = Math.min(size.x, size.y);
+		mCurrentClub = ((Cube3dApplication)context.getApplicationContext()).getClub();
 	}
 
 	public void initScene () {
@@ -106,7 +107,6 @@ public class Renderer extends RajawaliRenderer implements OnSharedPreferenceChan
 		}
 		sceneParser.parse();
 		mScene = sceneParser.getParsedObject();
-
 
 		mCube = objParser.getParsedObject();
 
@@ -152,10 +152,12 @@ public class Renderer extends RajawaliRenderer implements OnSharedPreferenceChan
 
 	}
 
+	private int getDrawableIdByName(String name) {
+		return  getContext().getResources().getIdentifier(name, "drawable", getContext().getPackageName());
+	}
+
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
 		super.onSurfaceCreated(gl, config);
-
-
 	}
 
 	public void onDrawFrame(GL10 glUnused) {
@@ -174,19 +176,6 @@ public class Renderer extends RajawaliRenderer implements OnSharedPreferenceChan
 		mOrientation = mCube.getOrientation();
 	}
 
-	private BaseObject3D LoadSerializedMesh(int paramInt) {
-		BaseObject3D resultObject = null;
-		try {
-			InputStream localInputStream = this.mContext.getResources().openRawResource(paramInt);
-			ObjectInputStream localObjectInputStream = new ObjectInputStream(localInputStream);
-			SerializedObject3D localSerializedObject3D = (SerializedObject3D) localObjectInputStream.readObject();
-			resultObject = new BaseObject3D(localSerializedObject3D);
-			localObjectInputStream.close();
-		} catch (Exception localException) {
-			localException.printStackTrace();
-		}
-		return resultObject;
-	}
 
 	@Override
 	public void onTouchEvent(MotionEvent me) {
