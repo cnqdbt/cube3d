@@ -31,6 +31,7 @@ public class Settings extends Activity implements
 	private ImageView mFixCubeImgView;
 	private boolean mAutoRotate;
 	private boolean mFixCube;
+    private int mCurrentClub;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -131,8 +132,13 @@ public class Settings extends Activity implements
     }
 
     private void initArticles() {
-        articles.add(new Article(getResources().getString(R.string.bg_1), R.drawable.scene_thumb));
-        articles.add(new Article(getResources().getString(R.string.bg_2), R.drawable.scene2_thumb));
+        mCurrentClub = ((Cube3dApplication)getApplication()).getClub();
+        articles.add(new Article(getResources().getString(R.string.bg_1), getDrawableIdByName("scene_thumb_" + mCurrentClub)));
+        articles.add(new Article(getResources().getString(R.string.bg_2), getDrawableIdByName("scene2_thumb_" + mCurrentClub)));
+    }
+
+    private int getDrawableIdByName(String name) {
+        return  getResources().getIdentifier(name, "drawable", getPackageName());
     }
 
     @Override

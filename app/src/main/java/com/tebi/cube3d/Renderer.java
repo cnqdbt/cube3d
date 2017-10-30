@@ -102,16 +102,16 @@ public class Renderer extends RajawaliRenderer implements OnSharedPreferenceChan
 		sceneParser.parse();
 		mScene = sceneParser.getParsedObject();
 		if (mCheckedPos == 0) {
-			mScene.addTexture(mTextureManager.addTexture(getBitmapByName("scene")));
+			mScene.addTexture(mTextureManager.addTexture(getBitmapByName("scene_" + mCurrentClub)));
 		} else {
-			mScene.addTexture(mTextureManager.addTexture(getBitmapByName("scene2")));
+			mScene.addTexture(mTextureManager.addTexture(getBitmapByName("scene2_" + mCurrentClub)));
 		}
 
 
 		ObjParser objParser = new ObjParser(mContext.getResources(), mTextureManager, R.raw.cube_obj);
 		objParser.parse();
 		mCube = objParser.getParsedObject();
-		mCube.addTexture(mTextureManager.addTexture(getBitmapByName("cube_texture")));
+		mCube.addTexture(mTextureManager.addTexture(getBitmapByName("cube_texture_" + mCurrentClub)));
 
 		mCube.addLight(light);
 		mCube.addLight(light2);
