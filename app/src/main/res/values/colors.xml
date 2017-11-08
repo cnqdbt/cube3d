@@ -2,5 +2,6 @@
 <resources>
 
     <color name="text_color">#222222</color>
+    <color name="main_color">#00b2d0</color>
 
 </resources>

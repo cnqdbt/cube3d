@@ -1,15 +1,8 @@
 package com.tebi.cube3d;
 
-import java.util.ArrayList;
-
-import rajawali.wallpaper.Wallpaper;
 import android.app.Activity;
-import android.app.WallpaperManager;
-import android.content.ComponentName;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -18,6 +11,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SeekBar;
+
+import java.util.ArrayList;
+
+import rajawali.wallpaper.Wallpaper;
 
 public class Settings extends Activity implements
 	SeekBar.OnSeekBarChangeListener {
@@ -118,14 +115,6 @@ public class Settings extends Activity implements
                 } catch (Exception e) {
 
                 }
-            }
-        });
-
-        Button shareButton = (Button) findViewById(R.id.share_button);
-        shareButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                share();
             }
         });
 

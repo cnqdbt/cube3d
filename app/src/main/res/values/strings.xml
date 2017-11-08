@@ -13,21 +13,21 @@
     <!-- Author -->
     <string name="lwp_author">TopbaseSoft</string>
 
-    <string name="settings_title">Settings</string>
+    <string name="settings_title">设置</string>
     
-    <string name="select_bg">Select Background</string>
+    <string name="select_bg">选择背景</string>
     
-    <string name="cube_size">Cube Size</string>
+    <string name="cube_size">立方体大小</string>
     
-    <string name="rotate_speed">Rotate Speed</string>
+    <string name="rotate_speed">选择速度</string>
     
     <string name="personal_wallpaper">Personal Wallpaper</string>
     
-    <string name="bg_1">Background 1</string>
+    <string name="bg_1">背景一</string>
     
-    <string name="bg_2">Background 2</string>
-    
-    <string name="auto_rotate">Rotate Automatically</string>
+    <string name="bg_2">背景二</string>
+
+    <string name="auto_rotate">自动旋转</string>
     
     <string name="fix_cube">Fix Cube</string>
 
