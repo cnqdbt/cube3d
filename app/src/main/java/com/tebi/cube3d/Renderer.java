@@ -51,7 +51,6 @@ public class Renderer extends RajawaliRenderer implements OnSharedPreferenceChan
 	private Quaternion mOrientation = null;
 	private boolean mAutoRotate;
 	private boolean mChangeToAutoRotate;
-	private boolean mFixCube;
 	private GestureDetector mGestureDetector;
 	private CubeRotateAnimation flingRotation;
 	private int mScreenX;
@@ -137,7 +136,6 @@ public class Renderer extends RajawaliRenderer implements OnSharedPreferenceChan
 		}
 
 		mAutoRotate = preferences.getBoolean("auto_rotate", true);
-		mFixCube = preferences.getBoolean("fix_cube", false);
 		if (mAutoRotate) {
 			Number3D axis = new Number3D(1, 8, 4);
 			axis.normalize();
@@ -169,16 +167,14 @@ public class Renderer extends RajawaliRenderer implements OnSharedPreferenceChan
 
 	public void onDrawFrame(GL10 glUnused) {
 		super.onDrawFrame(glUnused);
-		if (!mFixCube) {
-			if ((!mAutoRotate) && (touchTurn != 0)) {
-				mCube.rotateAround(mYAxis, touchTurn * 15);
-				touchTurn = 0;
-			}
+		if ((!mAutoRotate) && (touchTurn != 0)) {
+			mCube.rotateAround(mYAxis, touchTurn * 15);
+			touchTurn = 0;
+		}
 
-			if ((!mAutoRotate) && (touchTurnUp != 0)) {
-				mCube.rotateAround(mXAxis, touchTurnUp * 15);
-				touchTurnUp = 0;
-			}
+		if ((!mAutoRotate) && (touchTurnUp != 0)) {
+			mCube.rotateAround(mXAxis, touchTurnUp * 15);
+			touchTurnUp = 0;
 		}
 		mOrientation = mCube.getOrientation();
 	}
@@ -186,75 +182,73 @@ public class Renderer extends RajawaliRenderer implements OnSharedPreferenceChan
 
 	@Override
 	public void onTouchEvent(MotionEvent me) {
-		if (!mFixCube) {
-			if (!mAutoRotate) {
-				mGestureDetector.onTouchEvent(me);
-				if (me.getAction() == MotionEvent.ACTION_DOWN) {
-					xpos = me.getX();
-					ypos = me.getY();
-					return;
-				}
+		if (!mAutoRotate) {
+			mGestureDetector.onTouchEvent(me);
+			if (me.getAction() == MotionEvent.ACTION_DOWN) {
+				xpos = me.getX();
+				ypos = me.getY();
+				return;
+			}
 
-				if (me.getAction() == MotionEvent.ACTION_UP) {
-					xpos = -1;
-					ypos = -1;
-					touchTurn = 0;
-					touchTurnUp = 0;
-					return;
-				}
+			if (me.getAction() == MotionEvent.ACTION_UP) {
+				xpos = -1;
+				ypos = -1;
+				touchTurn = 0;
+				touchTurnUp = 0;
+				return;
+			}
 
-				if (me.getAction() == MotionEvent.ACTION_MOVE) {
-					float xd = me.getX() - xpos;
-					float yd = me.getY() - ypos;
+			if (me.getAction() == MotionEvent.ACTION_MOVE) {
+				float xd = me.getX() - xpos;
+				float yd = me.getY() - ypos;
 
-					xpos = me.getX();
-					ypos = me.getY();
+				xpos = me.getX();
+				ypos = me.getY();
 
-					touchTurn = xd / -100f;
-					touchTurnUp = yd / -100f;
-					return;
-				}
+				touchTurn = xd / -100f;
+				touchTurnUp = yd / -100f;
+				return;
+			}
 
-				try {
-					Thread.sleep(15);
-				} catch (Exception e) {
-					// No need for this...
-				}
-			} else {
+			try {
+				Thread.sleep(15);
+			} catch (Exception e) {
+				// No need for this...
+			}
+		} else {
 
-				switch (me.getAction() & MotionEvent.ACTION_MASK) {
+			switch (me.getAction() & MotionEvent.ACTION_MASK) {
 
-					case MotionEvent.ACTION_DOWN:
-						mStartX = me.getX();
-						mStartY = me.getY();
-						break;
-					case MotionEvent.ACTION_UP:
-						if ((me.getX() - mStartX) > TORLERANCE) {
-							if (mAnim != null) mAnim.cancel();
-							Number3D axis = new Number3D(-1, -8, -4);
-							axis.normalize();
-							mAnim = new RotateAnimation3D(axis, 360);
-							mAnim.setDuration(10000);
-							mAnim.setRepeatCount(Animation3D.INFINITE);
-							mAnim.setInterpolator(new AccelerateDecelerateInterpolator());
-							mAnim.setTransformable3D(mCube);
-							mAnim.start();
+				case MotionEvent.ACTION_DOWN:
+					mStartX = me.getX();
+					mStartY = me.getY();
+					break;
+				case MotionEvent.ACTION_UP:
+					if ((me.getX() - mStartX) > TORLERANCE) {
+						if (mAnim != null) mAnim.cancel();
+						Number3D axis = new Number3D(-1, -8, -4);
+						axis.normalize();
+						mAnim = new RotateAnimation3D(axis, 360);
+						mAnim.setDuration(10000);
+						mAnim.setRepeatCount(Animation3D.INFINITE);
+						mAnim.setInterpolator(new AccelerateDecelerateInterpolator());
+						mAnim.setTransformable3D(mCube);
+						mAnim.start();
 
-						} else if ((mStartX - me.getX()) > TORLERANCE) {
-							if (mAnim != null) mAnim.cancel();
-							Number3D axis = new Number3D(1, 8, 4);
-							axis.normalize();
-							mAnim = new RotateAnimation3D(axis, 360);
-							mAnim.setDuration(10000);
-							mAnim.setRepeatCount(Animation3D.INFINITE);
-							mAnim.setInterpolator(new AccelerateDecelerateInterpolator());
-							mAnim.setTransformable3D(mCube);
-							mAnim.start();
-						}
+					} else if ((mStartX - me.getX()) > TORLERANCE) {
+						if (mAnim != null) mAnim.cancel();
+						Number3D axis = new Number3D(1, 8, 4);
+						axis.normalize();
+						mAnim = new RotateAnimation3D(axis, 360);
+						mAnim.setDuration(10000);
+						mAnim.setRepeatCount(Animation3D.INFINITE);
+						mAnim.setInterpolator(new AccelerateDecelerateInterpolator());
+						mAnim.setTransformable3D(mCube);
+						mAnim.start();
+					}
 
-						break;
+					break;
 
-				}
 			}
 		}
 

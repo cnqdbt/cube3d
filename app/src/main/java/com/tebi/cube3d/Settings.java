@@ -25,9 +25,7 @@ public class Settings extends Activity implements
 	private SeekBar mScaleSeekBar;
 	private SeekBar mSpeedSeekBar;
 	private ImageView mAutoRotateImgView;
-	private ImageView mFixCubeImgView;
 	private boolean mAutoRotate;
-	private boolean mFixCube;
     private int mCurrentClub;
 
     @Override
@@ -40,7 +38,6 @@ public class Settings extends Activity implements
         SharedPreferences prefs = getSharedPreferences(Wallpaper.SHARED_PREFS_NAME, Context.MODE_PRIVATE);
         int checkedPosition = prefs.getInt("checked", 0);
         mAutoRotate = prefs.getBoolean("auto_rotate", true);
-        mFixCube = prefs.getBoolean("fix_cube", false);
         articles.get(checkedPosition).setIsChecked(true);
         mainListView = (ListView) findViewById(R.id.bg_list);
         adapter = new ArticleArrayAdapter(Settings.this, R.layout.list_item, articles);
@@ -69,34 +66,8 @@ public class Settings extends Activity implements
                 prefs.edit().putBoolean("auto_rotate", mAutoRotate).commit();
                 mAutoRotateImgView.setImageResource(mAutoRotate ? R.drawable.btn_check_on_holo_light : R.drawable.btn_check_off_holo_light);
 
-                if (mAutoRotate) {
-                    mFixCube = false;
-                    prefs.edit().putBoolean("fix_cube", mFixCube).commit();
-                    mFixCubeImgView.setImageResource(R.drawable.btn_check_off_holo_light);
-                }
             }
         });
-
-        mFixCubeImgView = (ImageView) findViewById(R.id.fix_cube_checkbox);
-        mFixCubeImgView.setImageResource(mFixCube ? R.drawable.btn_check_on_holo_light : R.drawable.btn_check_off_holo_light);
-        mFixCubeImgView.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                mFixCube = !mFixCube;
-                SharedPreferences prefs = getSharedPreferences(Wallpaper.SHARED_PREFS_NAME, Context.MODE_PRIVATE);
-                prefs.edit().putBoolean("fix_cube", mFixCube).commit();
-                mFixCubeImgView.setImageResource(mFixCube ? R.drawable.btn_check_on_holo_light : R.drawable.btn_check_off_holo_light);
-
-                if (mFixCube) {
-                    mAutoRotate = false;
-                    prefs.edit().putBoolean("auto_rotate", mAutoRotate).commit();
-                    mAutoRotateImgView.setImageResource(R.drawable.btn_check_off_holo_light);
-                }
-
-            }
-        });
-
 
         mScaleSeekBar = (SeekBar) findViewById(R.id.scale_seekbar);
         mScaleSeekBar.setOnSeekBarChangeListener(this);
@@ -171,8 +142,5 @@ public class Settings extends Activity implements
         this.finish();
     }
 
-    private void share() {
-
-    }
 
 }
