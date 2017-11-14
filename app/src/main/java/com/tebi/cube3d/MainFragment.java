@@ -10,11 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 
 
 public class MainFragment extends Fragment {
 
     Button enterBtn;
+    ImageView headerView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -26,7 +28,15 @@ public class MainFragment extends Fragment {
                 goToCubePreview();
             }
         });
+        headerView = (ImageView) rootView.findViewById(R.id.header_view);
+        refresh();
         return rootView;
+    }
+
+    public void refresh() {
+        int currentClub = ((Cube3dApplication) getActivity().getApplication()).getClub();
+        headerView.setImageResource(getDrawableIdByName("header_" + currentClub));
+
     }
 
     private void goToCubePreview() {
@@ -41,5 +51,9 @@ public class MainFragment extends Fragment {
         }
 
         startActivity(i);
+    }
+
+    private int getDrawableIdByName(String name) {
+        return  getResources().getIdentifier(name, "drawable", getContext().getPackageName());
     }
 }

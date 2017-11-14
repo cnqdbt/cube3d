@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
     private String[] clubs = {"milan", "juven"};
     private String[] clubNames = {"AC米兰", "尤文图斯"};
     TextView mToolBarTextView;
+    MainFragment mMainFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +41,8 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
         fragmentManager = getSupportFragmentManager();
         initToolbar();
         initMenuFragment();
-        addFragment(new MainFragment(), true, R.id.container);
+        mMainFragment = new MainFragment();
+        addFragment(mMainFragment, true, R.id.container);
     }
 
     private void initMenuFragment() {
@@ -149,8 +151,9 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
 
     @Override
     public void onMenuItemClick(View clickedView, int position) {
-        Toast.makeText(this, "Clicked on position: " + position, Toast.LENGTH_SHORT).show();
         ((Cube3dApplication) getApplication()).setClub(position -1);
+        refreshFrontPage();
+        mMainFragment.refresh();
 
     }
 
