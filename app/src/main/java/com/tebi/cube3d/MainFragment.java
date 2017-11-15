@@ -11,12 +11,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 
 public class MainFragment extends Fragment {
 
     Button enterBtn;
     ImageView headerView;
+    TextView tvTitle;
+    TextView tvContent;
+    String[] titles;
+    String[] contents;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -29,6 +34,11 @@ public class MainFragment extends Fragment {
             }
         });
         headerView = (ImageView) rootView.findViewById(R.id.header_view);
+        tvTitle = (TextView) rootView.findViewById(R.id.tv_title);
+        tvContent = (TextView) rootView.findViewById(R.id.tv_content);
+        titles = getResources().getStringArray(R.array.titles);
+        contents = getResources().getStringArray(R.array.contents);
+
         refresh();
         return rootView;
     }
@@ -36,7 +46,8 @@ public class MainFragment extends Fragment {
     public void refresh() {
         int currentClub = ((Cube3dApplication) getActivity().getApplication()).getClub();
         headerView.setImageResource(getDrawableIdByName("header_" + currentClub));
-
+        tvTitle.setText(titles[currentClub]);
+        tvContent.setText(contents[currentClub]);
     }
 
     private void goToCubePreview() {
@@ -56,4 +67,5 @@ public class MainFragment extends Fragment {
     private int getDrawableIdByName(String name) {
         return  getResources().getIdentifier(name, "drawable", getContext().getPackageName());
     }
+
 }

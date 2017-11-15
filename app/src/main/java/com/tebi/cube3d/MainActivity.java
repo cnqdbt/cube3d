@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,8 +30,7 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
 
     private FragmentManager fragmentManager;
     private ContextMenuDialogFragment mMenuDialogFragment;
-    private String[] clubs = {"milan", "juven"};
-    private String[] clubNames = {"AC米兰", "尤文图斯"};
+    private String[] clubNames = {"AC米兰", "尤文图斯", "国际米兰"};
     TextView mToolBarTextView;
     MainFragment mMainFragment;
 
@@ -56,31 +56,16 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
     }
 
     private List<MenuObject> getMenuObjects() {
-        // You can use any [resource, bitmap, drawable, color] as image:
-        // item.setResource(...)
-        // item.setBitmap(...)
-        // item.setDrawable(...)
-        // item.setColor(...)
-        // You can set image ScaleType:
-        // item.setScaleType(ScaleType.FIT_XY)
-        // You can use any [resource, drawable, color] as background:
-        // item.setBgResource(...)
-        // item.setBgDrawable(...)
-        // item.setBgColor(...)
-        // You can use any [color] as text color:
-        // item.setTextColor(...)
-        // You can set any [color] as divider color:
-        // item.setDividerColor(...)
-
         List<MenuObject> menuObjects = new ArrayList<>();
 
         MenuObject close = new MenuObject();
         close.setResource(R.drawable.icn_close);
         menuObjects.add(close);
 
-        for (int i = 0; i < clubs.length; i++) {
+        for (int i = 0; i < clubNames.length; i++) {
             MenuObject mo = new MenuObject(clubNames[i]);
             mo.setResource(getDrawableIdByName("icon_" + i));
+            mo.setScaleType(ImageView.ScaleType.FIT_XY);
             menuObjects.add(mo);
         }
 

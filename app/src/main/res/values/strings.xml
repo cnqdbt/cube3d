@@ -29,8 +29,14 @@
 
     <string name="auto_rotate">自动旋转</string>
 
-    <string name="text">历史最佳11人\n\n门将：迪达\n后卫：马尔蒂尼，内斯塔，巴雷西，卡福\n中场：卡卡，皮尔洛，里杰卡尔德，古力特\n前锋：范巴斯滕，舍甫琴科</string>
-    <string name="title">青春不再，情怀难改，永远的米兰</string>
-    <string name="context_menu">Context menu</string>
+    <string-array name="titles">
+        <item>青春不再，情怀难改，永远的米兰</item>
+        <item>老妇人</item>
+    </string-array>
+
+    <string-array name="contents">
+        <item>历史最佳11人\n\n门将：迪达\n后卫：马尔蒂尼，内斯塔，巴雷西，卡福\n中场：卡卡，皮尔洛，里杰卡尔德，古力特\n前锋：范巴斯滕，舍甫琴科</item>
+        <item>历史最佳11人\n\n门将：\n后卫：马尔蒂尼，内斯塔，巴雷西，卡福\n中场：卡卡，皮尔洛，里杰卡尔德，古力特\n前锋：范巴斯滕，舍甫琴科</item>
+    </string-array>
 
 </resources>
