@@ -31,12 +31,15 @@
 
     <string-array name="titles">
         <item>青春不再，情怀难改，永远的米兰</item>
-        <item>老妇人</item>
+        <item>斑马铁蹄，踏碎意甲乾坤</item>
+        <item>最好的时光：Solo Inter</item>
     </string-array>
 
     <string-array name="contents">
         <item>历史最佳11人\n\n门将：迪达\n后卫：马尔蒂尼，内斯塔，巴雷西，卡福\n中场：卡卡，皮尔洛，里杰卡尔德，古力特\n前锋：范巴斯滕，舍甫琴科</item>
-        <item>历史最佳11人\n\n门将：\n后卫：马尔蒂尼，内斯塔，巴雷西，卡福\n中场：卡卡，皮尔洛，里杰卡尔德，古力特\n前锋：范巴斯滕，舍甫琴科</item>
+        <item>历史最佳11人\n\n门将：佐夫\n后卫：卡布里尼，詹蒂莱，西雷阿，图拉姆\n中场：塔尔德利，齐达内，普拉蒂尼，内德维德\n前锋：巴乔，皮耶罗</item>
+        <item>历史最佳11人\n\n门将：曾加\n后卫：法切蒂，布尔尼什，贝尔戈米，萨内蒂\n中场：奥里亚利，马特乌斯，马佐拉，苏亚雷斯\n前锋：梅阿查，罗纳尔多</item>
+
     </string-array>
 
 </resources>
