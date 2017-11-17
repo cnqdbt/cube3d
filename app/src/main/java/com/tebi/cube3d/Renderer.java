@@ -54,10 +54,12 @@ public class Renderer extends RajawaliRenderer implements OnSharedPreferenceChan
 	private CubeRotateAnimation flingRotation;
 	private int mScreenX;
 	private int mCurrentClub;
+	private Context mContext;
 
 	public Renderer(Context context) {
 		super(context);
 		setFrameRate(50);
+		mContext = context;
 		preferences = mContext.getSharedPreferences(Wallpaper.SHARED_PREFS_NAME,
 				Context.MODE_PRIVATE);
 		preferences.registerOnSharedPreferenceChangeListener(this);
@@ -73,10 +75,11 @@ public class Renderer extends RajawaliRenderer implements OnSharedPreferenceChan
 			size.y = display.getHeight();
 		}
 		mScreenX = Math.min(size.x, size.y);
-		mCurrentClub = ((Cube3dApplication)context.getApplicationContext()).getClub();
+
 	}
 
 	public void initScene () {
+		mCurrentClub = ((Cube3dApplication) mContext.getApplicationContext()).getClubInPref();
 		ALight light = new DirectionalLight(1.1f, -0.5f, -0.8f);
 		light.setPower(0.85f);
 

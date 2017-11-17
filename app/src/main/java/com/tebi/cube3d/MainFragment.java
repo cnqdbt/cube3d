@@ -22,6 +22,7 @@ public class MainFragment extends Fragment {
     TextView tvContent;
     String[] titles;
     String[] contents;
+    int mCurrentClub;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -43,11 +44,14 @@ public class MainFragment extends Fragment {
         return rootView;
     }
 
+    public void setCurrentClub(int c) {
+        mCurrentClub = c;
+    }
+
     public void refresh() {
-        int currentClub = ((Cube3dApplication) getActivity().getApplication()).getClub();
-        headerView.setImageResource(getDrawableIdByName("header_" + currentClub));
-        tvTitle.setText(titles[currentClub]);
-        tvContent.setText(contents[currentClub]);
+        headerView.setImageResource(getDrawableIdByName("header_" + mCurrentClub));
+        tvTitle.setText(titles[mCurrentClub]);
+        tvContent.setText(contents[mCurrentClub]);
     }
 
     private void goToCubePreview() {
@@ -62,6 +66,8 @@ public class MainFragment extends Fragment {
         }
 
         startActivity(i);
+
+        ((Cube3dApplication)(getActivity().getApplication())).setClubInPref(mCurrentClub);
     }
 
     private int getDrawableIdByName(String name) {

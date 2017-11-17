@@ -92,7 +92,7 @@ public class Settings extends Activity implements
     }
 
     private void initArticles() {
-        mCurrentClub = ((Cube3dApplication)getApplication()).getClub();
+        mCurrentClub = ((Cube3dApplication)getApplication()).getClubInPref();
         articles.add(new Article(getResources().getString(R.string.bg_1), getDrawableIdByName("scene_thumb_" + mCurrentClub)));
         articles.add(new Article(getResources().getString(R.string.bg_2), getDrawableIdByName("scene2_thumb_" + mCurrentClub)));
     }
@@ -128,17 +128,6 @@ public class Settings extends Activity implements
     }
 
     private void setWallPaper() {
-//        Intent i = new Intent();
-//
-//        if (Build.VERSION.SDK_INT >= 16) {
-//            i.setAction(WallpaperManager.ACTION_CHANGE_LIVE_WALLPAPER);
-//            i.putExtra(WallpaperManager.EXTRA_LIVE_WALLPAPER_COMPONENT,
-//                    new ComponentName(this, Service.class));
-//        } else {
-//            i.setAction(WallpaperManager.ACTION_LIVE_WALLPAPER_CHOOSER);
-//        }
-
-//        startActivity(i);
         this.finish();
     }
 

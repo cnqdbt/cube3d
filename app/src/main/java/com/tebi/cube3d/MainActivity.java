@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
     private String[] clubNames = {"AC米兰", "尤文图斯", "国际米兰", "利物浦", "拜仁慕尼黑", "多特蒙德"};
     TextView mToolBarTextView;
     MainFragment mMainFragment;
+    private int mCurrentClub;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -136,7 +137,8 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
 
     @Override
     public void onMenuItemClick(View clickedView, int position) {
-        ((Cube3dApplication) getApplication()).setClub(position -1);
+        mCurrentClub = position -1;
+        mMainFragment.setCurrentClub(mCurrentClub);
         refreshFrontPage();
         mMainFragment.refresh();
 
@@ -152,7 +154,6 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
     }
 
     private void refreshFrontPage() {
-        int currentClub = ((Cube3dApplication) getApplication()).getClub();
-        mToolBarTextView.setText(clubNames[currentClub]);
+        mToolBarTextView.setText(clubNames[mCurrentClub]);
     }
 }
