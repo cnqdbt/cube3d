@@ -34,8 +34,7 @@ public class Renderer extends RajawaliRenderer implements OnSharedPreferenceChan
 	private Animation3D mAnim;
 	private BaseObject3D mCube;
 	private BaseObject3D mScene;
-	private float mStartX = 0, mStartY = 0;
-	private final float TORLERANCE = 80.0f;
+	private float mStartX = 0;
 
 	Number3D mXAxis = new Number3D(1, 0, 0);
 	Number3D mYAxis = new Number3D(0, 1, 0);
@@ -221,10 +220,10 @@ public class Renderer extends RajawaliRenderer implements OnSharedPreferenceChan
 
 				case MotionEvent.ACTION_DOWN:
 					mStartX = me.getX();
-					mStartY = me.getY();
 					break;
 				case MotionEvent.ACTION_UP:
-					if ((me.getX() - mStartX) > TORLERANCE) {
+					final float TOLERANCE = 80.0f;
+					if ((me.getX() - mStartX) > TOLERANCE) {
 						if (mAnim != null) mAnim.cancel();
 						Number3D axis = new Number3D(-1, -8, -4);
 						axis.normalize();
@@ -235,7 +234,7 @@ public class Renderer extends RajawaliRenderer implements OnSharedPreferenceChan
 						mAnim.setTransformable3D(mCube);
 						mAnim.start();
 
-					} else if ((mStartX - me.getX()) > TORLERANCE) {
+					} else if ((mStartX - me.getX()) > TOLERANCE) {
 						if (mAnim != null) mAnim.cancel();
 						Number3D axis = new Number3D(1, 8, 4);
 						axis.normalize();
