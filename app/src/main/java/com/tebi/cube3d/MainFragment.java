@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.tendcloud.tenddata.TCAgent;
+
 
 public class MainFragment extends Fragment {
 
@@ -68,6 +70,7 @@ public class MainFragment extends Fragment {
         startActivity(i);
 
         ((Cube3dApplication)(getActivity().getApplication())).setClubInPref(mCurrentClub);
+        TCAgent.onEvent(getContext(), "enter_fame_hall", mCurrentClub + "");
     }
 
     private int getDrawableIdByName(String name) {

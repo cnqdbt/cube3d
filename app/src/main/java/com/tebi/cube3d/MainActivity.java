@@ -1,8 +1,5 @@
 package com.tebi.cube3d;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -17,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.tendcloud.tenddata.TCAgent;
 import com.yalantis.contextmenu.lib.ContextMenuDialogFragment;
 import com.yalantis.contextmenu.lib.MenuObject;
 import com.yalantis.contextmenu.lib.MenuParams;
@@ -141,6 +139,7 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
         mMainFragment.setCurrentClub(mCurrentClub);
         refreshFrontPage();
         mMainFragment.refresh();
+        TCAgent.onEvent(this, "menu_item_clicked", clubNames[mCurrentClub]);
 
     }
 

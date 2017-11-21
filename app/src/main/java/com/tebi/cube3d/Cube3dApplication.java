@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.tendcloud.tenddata.TCAgent;
+
 import rajawali.wallpaper.Wallpaper;
 
 /**
@@ -12,7 +14,6 @@ import rajawali.wallpaper.Wallpaper;
 
 public class Cube3dApplication extends Application {
 
-    private Renderer mRenderer;
     protected SharedPreferences preferences;
 
     @Override
@@ -20,6 +21,9 @@ public class Cube3dApplication extends Application {
         super.onCreate();
         preferences = getSharedPreferences(Wallpaper.SHARED_PREFS_NAME,
                 Context.MODE_PRIVATE);
+
+        TCAgent.init(getApplicationContext());
+        TCAgent.setReportUncaughtExceptions(true);
     }
 
 

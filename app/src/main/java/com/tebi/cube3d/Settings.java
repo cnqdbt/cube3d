@@ -1,9 +1,10 @@
 package com.tebi.cube3d;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -11,12 +12,15 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SeekBar;
+import android.widget.TextView;
+
+import com.tendcloud.tenddata.TCAgent;
 
 import java.util.ArrayList;
 
 import rajawali.wallpaper.Wallpaper;
 
-public class Settings extends Activity implements
+public class Settings extends AppCompatActivity implements
 	SeekBar.OnSeekBarChangeListener {
 	
 	private ListView mainListView;
@@ -27,13 +31,15 @@ public class Settings extends Activity implements
 	private ImageView mAutoRotateImgView;
 	private boolean mAutoRotate;
     private int mCurrentClub;
+    private TextView mToolBarTextView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_list_single);
-        initArticles();
 
+        initArticles();
+        initToolbar();
 
         SharedPreferences prefs = getSharedPreferences(Wallpaper.SHARED_PREFS_NAME, Context.MODE_PRIVATE);
         int checkedPosition = prefs.getInt("checked", 0);
@@ -51,6 +57,7 @@ public class Settings extends Activity implements
                 adapter.notifyDataSetChanged();
                 SharedPreferences prefs = getSharedPreferences(Wallpaper.SHARED_PREFS_NAME, Context.MODE_PRIVATE);
                 prefs.edit().putInt("checked", position).commit();
+                TCAgent.onEvent(getApplication(), "on_background_select");
 
             }
         });
@@ -65,7 +72,7 @@ public class Settings extends Activity implements
                 SharedPreferences prefs = getSharedPreferences(Wallpaper.SHARED_PREFS_NAME, Context.MODE_PRIVATE);
                 prefs.edit().putBoolean("auto_rotate", mAutoRotate).commit();
                 mAutoRotateImgView.setImageResource(mAutoRotate ? R.drawable.btn_check_on_holo_light : R.drawable.btn_check_off_holo_light);
-
+                TCAgent.onEvent(getApplication(), "auto_rotate_changed");
             }
         });
 
@@ -81,11 +88,26 @@ public class Settings extends Activity implements
         setButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    setWallPaper();
-                } catch (Exception e) {
+                finish();
+            }
+        });
 
-                }
+    }
+
+    private void initToolbar() {
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        mToolBarTextView = (TextView) findViewById(R.id.text_view_toolbar_title);
+        setSupportActionBar(mToolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setHomeButtonEnabled(true);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+        }
+        mToolbar.setNavigationIcon(R.drawable.btn_back);
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
             }
         });
 
@@ -125,10 +147,6 @@ public class Settings extends Activity implements
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
 
-    }
-
-    private void setWallPaper() {
-        this.finish();
     }
 
 
