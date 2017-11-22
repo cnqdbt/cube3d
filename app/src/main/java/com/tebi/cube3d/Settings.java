@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SeekBar;
-import android.widget.TextView;
 
 import com.tendcloud.tenddata.TCAgent;
 
@@ -31,7 +30,6 @@ public class Settings extends AppCompatActivity implements
 	private ImageView mAutoRotateImgView;
 	private boolean mAutoRotate;
     private int mCurrentClub;
-    private TextView mToolBarTextView;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -96,7 +94,6 @@ public class Settings extends AppCompatActivity implements
 
     private void initToolbar() {
         Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        mToolBarTextView = (TextView) findViewById(R.id.text_view_toolbar_title);
         setSupportActionBar(mToolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setHomeButtonEnabled(true);

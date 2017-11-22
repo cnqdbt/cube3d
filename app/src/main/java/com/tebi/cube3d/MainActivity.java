@@ -14,6 +14,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.qq.e.ads.interstitial.AbstractInterstitialADListener;
+import com.qq.e.ads.interstitial.InterstitialAD;
+import com.qq.e.comm.util.AdError;
 import com.tendcloud.tenddata.TCAgent;
 import com.yalantis.contextmenu.lib.ContextMenuDialogFragment;
 import com.yalantis.contextmenu.lib.MenuObject;
@@ -42,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
         initMenuFragment();
         mMainFragment = new MainFragment();
         addFragment(mMainFragment, true, R.id.container);
+        loadOrShowAd();
     }
 
     private void initMenuFragment() {
@@ -135,12 +139,14 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
 
     @Override
     public void onMenuItemClick(View clickedView, int position) {
-        mCurrentClub = position -1;
-        mMainFragment.setCurrentClub(mCurrentClub);
-        refreshFrontPage();
-        mMainFragment.refresh();
-        TCAgent.onEvent(this, "menu_item_clicked", clubNames[mCurrentClub]);
-
+        if (position != 0) {
+            mCurrentClub = position - 1;
+            mMainFragment.setCurrentClub(mCurrentClub);
+            refreshFrontPage();
+            mMainFragment.refresh();
+            TCAgent.onEvent(this, "menu_item_clicked", clubNames[mCurrentClub]);
+            loadOrShowAd();
+        }
     }
 
     @Override
@@ -154,5 +160,23 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
 
     private void refreshFrontPage() {
         mToolBarTextView.setText(clubNames[mCurrentClub]);
+    }
+
+    private void loadOrShowAd() {
+//        final InterstitialAD iad = new InterstitialAD(this, "1106022113", "1000528285045599");
+//        iad.setADListener(new AbstractInterstitialADListener() {
+//
+//            @Override
+//            public void onADReceive() {
+//                iad.show();
+//                TCAgent.onEvent(MainActivity.this, "gdt_ad_shown");
+//            }
+//
+//            @Override
+//            public void onNoAD(AdError arg0) {
+//            }
+//        });
+//
+//        iad.loadAD();
     }
 }
