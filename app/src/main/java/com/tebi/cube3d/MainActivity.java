@@ -163,7 +163,7 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
     }
 
     private void loadOrShowAd() {
-//        final InterstitialAD iad = new InterstitialAD(this, "1106022113", "1000528285045599");
+//        final InterstitialAD iad = new InterstitialAD(this, "1106474079", "1000528285045599");
 //        iad.setADListener(new AbstractInterstitialADListener() {
 //
 //            @Override
