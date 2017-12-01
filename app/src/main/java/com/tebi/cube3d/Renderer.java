@@ -137,7 +137,7 @@ public class Renderer extends RajawaliRenderer implements OnSharedPreferenceChan
 			mChangeToAutoRotate = false;
 		}
 
-		mAutoRotate = preferences.getBoolean("auto_rotate", true);
+		mAutoRotate = preferences.getBoolean("auto_rotate", false);
 		if (mAutoRotate) {
 			Number3D axis = new Number3D(1, 8, 4);
 			axis.normalize();

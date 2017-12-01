@@ -41,7 +41,7 @@ public class Settings extends AppCompatActivity implements
 
         SharedPreferences prefs = getSharedPreferences(Wallpaper.SHARED_PREFS_NAME, Context.MODE_PRIVATE);
         int checkedPosition = prefs.getInt("checked", 0);
-        mAutoRotate = prefs.getBoolean("auto_rotate", true);
+        mAutoRotate = prefs.getBoolean("auto_rotate", false);
         articles.get(checkedPosition).setIsChecked(true);
         mainListView = (ListView) findViewById(R.id.bg_list);
         adapter = new ArticleArrayAdapter(Settings.this, R.layout.list_item, articles);
