@@ -64,8 +64,7 @@
 				android:layout_height="wrap_content"
 				android:text="@string/auto_rotate"
 				android:textColor="@color/text_color"
-				android:textSize="17sp"
-				android:paddingTop="3dip" />
+				android:textSize="17sp" />
 
 			<ImageView
 				android:id="@+id/auto_rotate_checkbox"
@@ -119,15 +118,18 @@
 			android:layout_width="fill_parent"
 			android:layout_height="wrap_content"
 			android:layout_below="@+id/speed_seekbar"
-			android:layout_marginTop="50.0dip"
+			android:layout_marginTop="15.0dip"
 			android:gravity="center" >
 
 			<Button
 				android:id="@+id/set_button"
 				android:layout_width="110dip"
 				android:layout_height="40dip"
+				android:layout_margin="20dp"
+				android:background="?attr/colorPrimary"
 				android:backgroundTint="@color/main_color"
-				android:text="设定" />
+				android:text="设定"
+				android:textSize="@dimen/menu_text_size" />
 		</LinearLayout>
 
 	</RelativeLayout>
