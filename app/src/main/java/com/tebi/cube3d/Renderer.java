@@ -121,7 +121,7 @@ public class Renderer extends RajawaliRenderer implements OnSharedPreferenceChan
 		addChild(mCube);
 		addChild(mScene);
 
-		mCube.setScale(preferences.getInt("scale", 80) / 80.0f);
+		mCube.setScale(preferences.getInt("scale", 90) / 100.0f);
 		mCube.setMaterial(new DiffuseMaterial());
 
 		int speed = preferences.getInt("speed", 50);

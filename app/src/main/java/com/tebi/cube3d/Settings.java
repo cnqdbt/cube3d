@@ -76,7 +76,7 @@ public class Settings extends AppCompatActivity implements
 
         mScaleSeekBar = (SeekBar) findViewById(R.id.scale_seekbar);
         mScaleSeekBar.setOnSeekBarChangeListener(this);
-        mScaleSeekBar.setProgress(prefs.getInt("scale", 80));
+        mScaleSeekBar.setProgress(prefs.getInt("scale", 90));
 
         mSpeedSeekBar = (SeekBar) findViewById(R.id.speed_seekbar);
         mSpeedSeekBar.setOnSeekBarChangeListener(this);
