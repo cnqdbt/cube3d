@@ -31,7 +31,8 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
 
     private FragmentManager fragmentManager;
     private ContextMenuDialogFragment mMenuDialogFragment;
-    private String[] clubNames = {"AC米兰", "尤文图斯", "国际米兰", "利物浦", "拜仁慕尼黑", "多特蒙德"};
+    private String[] clubNames = {"AC米兰", "尤文图斯", "国际米兰", "利物浦", "拜仁慕尼黑", "多特蒙德"
+            , "皇家马德里", "巴塞罗那"};
     TextView mToolBarTextView;
     MainFragment mMainFragment;
     private int mCurrentClub;
