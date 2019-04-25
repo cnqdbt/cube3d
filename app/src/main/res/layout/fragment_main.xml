@@ -46,6 +46,6 @@
         android:layout_margin="20dp"
         android:background="?attr/colorPrimary"
         android:backgroundTint="@color/main_color"
-        android:text="3D名人堂"
+        android:text="@string/fame_hall"
         android:textSize="@dimen/menu_text_size" />
 </LinearLayout>

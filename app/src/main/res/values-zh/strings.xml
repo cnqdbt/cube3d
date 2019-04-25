@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Application Name -->
+    <string name="app_name">足球圣殿</string>
+
+    <!-- Name in Live Wallpaper Picker list -->
+    <string name="lwp_name">足球圣殿3D壁纸</string>
+
+    <!-- Description in Live Wallpaper Picker list -->
+    <string name="lwp_desc">足球圣殿3D壁纸</string>
+
+    <!-- Author -->
+    <string name="lwp_author">TopbaseSoft</string>
+
+    <string name="settings_title">设置</string>
+    
+    <string name="select_bg">选择背景</string>
+    
+    <string name="cube_size">立方体大小</string>
+    
+    <string name="rotate_speed">旋转速度</string>
+    
+    <string name="personal_wallpaper">Personal Wallpaper</string>
+    
+    <string name="bg_1">背景一</string>
+    
+    <string name="bg_2">背景二</string>
+
+    <string name="auto_rotate">自动旋转</string>
+
+    <string name="fame_hall">3D名人堂</string>
+
+    <string-array name="titles">
+        <item>青春不再，情怀难改，永远的米兰</item>
+        <item>斑马铁蹄，踏碎意甲乾坤</item>
+        <item>最好的时光：Solo Inter</item>
+        <item>劫富济贫利物浦，永不独行红衫军</item>
+        <item>Stern des Südens: 南部之星</item>
+        <item>不离不弃，响彻威斯特法伦的战歌</item>
+        <item>云淡风清伯纳乌</item>
+        <item>情堪隽永，也善心潮掀狂澜</item>
+    </string-array>
+
+    <string-array name="contents">
+        <item>历史最佳11人\n\n门将：迪达\n后卫：马尔蒂尼，内斯塔，巴雷西，卡福\n中场：卡卡，皮尔洛，里杰卡尔德，古力特\n前锋：范巴斯滕，舍甫琴科</item>
+        <item>历史最佳11人\n\n门将：佐夫\n后卫：卡布里尼，詹蒂莱，西雷阿，图拉姆\n中场：塔尔德利，齐达内，普拉蒂尼，内德维德\n前锋：巴乔，皮耶罗</item>
+        <item>历史最佳11人\n\n门将：曾加\n后卫：法切蒂，布尔尼什，贝尔戈米，萨内蒂\n中场：奥里亚利，马特乌斯，马佐拉，苏亚雷斯\n前锋：梅阿查，罗纳尔多</item>
+        <item>历史最佳11人\n\n门将：克莱门斯\n后卫：阿兰-汉森，海皮亚，卡拉格\n中场：巴恩斯，杰拉德，索内斯，基冈\n前锋：达格利什，拉什，苏亚雷斯</item>
+        <item>历史最佳11人\n\n门将：卡恩\n后卫：拉姆，奥根塔勒，贝肯鲍尔，布赖特纳\n中场：埃芬博格，马特乌斯，巴拉克，绍尔\n前锋：盖德-穆勒，鲁梅尼格</item>
+        <item>历史最佳11人\n\n门将：斯蒂凡-克罗斯\n后卫：德德，科勒尔，萨默尔，罗伊特\n中场：罗伊斯，京多安，罗西基，A-穆勒\n前锋：查普伊萨特，里德尔</item>
+        <item>历史最佳11人\n\n门将：卡西利亚斯\n后卫：卡马乔，耶罗，拉莫斯，岑多\n中场：迪斯蒂法诺，齐达内，菲戈\n前锋：亨托，普斯卡什，C-罗纳尔多</item>
+        <item>历史最佳11人\n\n门将：苏比萨雷塔\n后卫：米盖利，罗纳德-科曼，普约尔\n中场：罗纳尔迪尼奥，瓜迪奥拉，哈维，伊涅斯塔\n前锋：克鲁伊夫，里瓦尔多，梅西</item>
+    </string-array>
+
+</resources>

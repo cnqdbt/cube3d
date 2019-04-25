@@ -14,9 +14,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.qq.e.ads.interstitial.AbstractInterstitialADListener;
-import com.qq.e.ads.interstitial.InterstitialAD;
-import com.qq.e.comm.util.AdError;
 import com.tendcloud.tenddata.TCAgent;
 import com.yalantis.contextmenu.lib.ContextMenuDialogFragment;
 import com.yalantis.contextmenu.lib.MenuObject;
@@ -31,8 +28,8 @@ public class MainActivity extends AppCompatActivity implements OnMenuItemClickLi
 
     private FragmentManager fragmentManager;
     private ContextMenuDialogFragment mMenuDialogFragment;
-    private String[] clubNames = {"AC米兰", "尤文图斯", "国际米兰", "利物浦", "拜仁慕尼黑", "多特蒙德"
-            , "皇家马德里", "巴塞罗那"};
+    private String[] clubNames = {"AC Milan", "Juventus", "Inter Milan", "FC Liverpool", "FC Bayern", "BVB Dortmund"
+            , "Real Madrid", "FC Barcelona"};
     TextView mToolBarTextView;
     MainFragment mMainFragment;
     private int mCurrentClub;
